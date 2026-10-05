@@ -29,8 +29,9 @@ public abstract class Model {
     }
 
     public Model() {
-        this.enableField = new BooleanModelField("enable", getEnableFieldName(), false);
-    }
+            // 默认启用所有模块（原版默认 false 需手动开启；改为 true 便于内置版开箱即用）
+            this.enableField = new BooleanModelField("enable", getEnableFieldName(), true);
+        }
 
     public String getEnableFieldName() {
         return "开启" + getName();
