@@ -126,15 +126,7 @@ jobs:
           echo "$COMMIT_MESSAGE_BODY" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: 15. 自动打标签（例如 v2.5.8）
-        if: startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push'
-        run: |
-          VERSION_TAG="v${{ steps.extract_info.outputs.version }}"
-          echo "Creating tag: $VERSION_TAG"
-          git tag "$VERSION_TAG"
-          git push origin "$VERSION_TAG"
-
-      - name: 16. 发布到 GitHub Release
+      - name: 15. 发布到 GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           name: ${{ github.event.release.tag_name || steps.extract_info.outputs.version }} # 发布的名称。默认为标签名称
