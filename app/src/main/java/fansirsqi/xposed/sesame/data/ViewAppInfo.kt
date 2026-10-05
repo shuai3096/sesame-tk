@@ -16,7 +16,8 @@ object ViewAppInfo {
     var appBuildTarget: String = ""
     var appBuildNumber: String = ""
     var androidId: String = ""
-    var veriftag: Boolean = false
+    // 移除远程验证依赖：veriftag 恒为 true（免绑定免提示）
+    var veriftag: Boolean = true
 
     @SuppressLint("HardwareIds")
 

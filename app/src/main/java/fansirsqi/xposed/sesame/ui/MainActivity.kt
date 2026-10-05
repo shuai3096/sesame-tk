@@ -107,7 +107,8 @@ class MainActivity : BaseActivity() {
             oneWord.text = result
         }
         c = SecureApiClient(baseUrl = getRandomApi(0x22), signatureKey = getRandomEncryptData(0xCF))
-        lifecycleScope.launch {
+        // [已移除] 远程内测验证：不再向作者服务器请求，veriftag 恒为 true（免绑定免提示）
+        /*lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 c.secureVerify(deviceId = androidId, path = getRandomEncryptData(0x9e))
             }
@@ -123,7 +124,7 @@ class MainActivity : BaseActivity() {
                 }
 
             }
-        }
+        }*/
 
     }
 
